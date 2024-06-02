@@ -1,0 +1,83 @@
+{
+    // General settings
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": true,
+        "source.fixAll.eslint": true
+    },
+
+    // ESLint settings
+    "eslint.alwaysShowStatus": true,
+    "eslint.validate": [
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact"
+    ],
+ // Auto Close Tag settings
+ "auto-close-tag.enableAutoCloseTag": true,
+
+ // Auto Rename Tag settings
+ "auto-rename-tag.activationOnLanguage": [
+     "javascript",
+     "javascriptreact",
+     "typescript",
+     "typescriptreact",
+     "html",
+     "xml"
+ ],
+
+    // Import Sorter settings
+    "importSorter.generalConfiguration.sortOnBeforeSave": true,
+    "importSorter.sortConfiguration.importStringConfiguration.hasSemicolon": true,
+    "importSorter.sortConfiguration.importStringConfiguration.maximumNumberOfImportExpressionsPerLine.type": "newLineEachExpressionAfterCountLimit",
+    "importSorter.sortConfiguration.importStringConfiguration.maximumNumberOfImportExpressionsPerLine.count": 1,
+    "importSorter.sortConfiguration.sortMethod": "module",
+    "importSorter.sortConfiguration.customOrderingRules": [
+        {
+            "regex": "^react$",
+            "orderLevel": 10,
+            "orderType": "asc"
+        },
+        {
+            "regex": "^@",
+            "orderLevel": 20,
+            "orderType": "asc"
+        },
+        {
+            "regex": "^[a-z]",
+            "orderLevel": 30,
+            "orderType": "asc"
+        },
+        {
+            "regex": "^[A-Z]",
+            "orderLevel": 40,
+            "orderType": "asc"
+        },
+        {
+            "regex": "^\\.",
+            "orderLevel": 50,
+            "orderType": "asc"
+        }
+    ],
+
+    // Prettier settings for consistent code formatting
+    "prettier.singleQuote": true,
+    "prettier.trailingComma": "all",
+    "prettier.printWidth": 80,
+    "prettier.arrowParens": "avoid",
+
+    // TypeScript Hero settings (if needed for additional import management)
+    "typescriptHero.resolver.resolverMode": "file",
+    "typescriptHero.imports.organizeOnSave": true,
+    "typescriptHero.imports.sortMethod": "importPaths",
+
+    // Additional settings for better coding experience
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
+    "files.autoSave": "onFocusChange",
+    "editor.tabSize": 2,
+    "editor.detectIndentation": false,
+    "editor.minimap.enabled": false,
+
+}
