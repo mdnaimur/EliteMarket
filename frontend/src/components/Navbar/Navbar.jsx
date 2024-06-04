@@ -2,11 +2,12 @@ import "./Navbar.scss";
 
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import { Link } from 'react-router-dom';
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
 import SearchIcon from "@mui/icons-material/Search";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import Cart from "../Cart/Cart";
 
 function Navbar() {
   const [open,setOpen] = useState(false)
@@ -70,6 +71,7 @@ function Navbar() {
           </div>
         </div>
       </div>
+      {open && <Cart />}
     </div>
   )
 }
