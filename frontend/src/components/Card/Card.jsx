@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const Card = ({item}) => {
 
-console.log('I am card',item)
+// console.log('I am card',item)
 
   return (
     <Link className="link" to={`/product/${item.id}`}>

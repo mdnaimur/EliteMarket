@@ -2,11 +2,18 @@ import "./FeaturedProducts.scss";
 
 import { useEffect, useState } from "react";
 
+import axios from "axios";
 import PropTypes from 'prop-types';
+import useFetch from "../../../hooks/useFetch";
 import Card from '../Card/Card';
 
 const FeaturedProducts = ({ type } ) => {
   const [products,setProducts] = useState([])
+
+  const {data } = useFetch('/products')
+
+  // console.log('i am useFetch Hook data', products)
+
 
 
   useEffect (()=>{
@@ -17,25 +24,25 @@ const FeaturedProducts = ({ type } ) => {
           // const apiUrl = import.meta.env.VITE_API_URL
           //console.log('API URL:', apiUrl);
 
-          const res = await fetch(`${import.meta.env.VITE_API_URL}/products`)
-          if(!res.ok){
-            throw new Error('Network response was not working')
-          }
+          // const res = await fetch(`${import.meta.env.VITE_API_URL}/products`)
+          // if(!res.ok){
+          //   throw new Error('Network response was not working')
+          // }
           //  const apiToken = import.meta.env.VITE_API_TOKEN;
 
           // console.log('API URL:', apiUrl);
           // console.log('API Token:', apiToken);
 
-          // const res = await axios.get(`${import.meta.env.VITE_API_URL}/products`,{
-          //  headers:{
-          //   Authorization: `Bearer ${import.meta.env.VITE_API_TOKEN}`
-          //  }
-          // })
+          const res = await axios.get(`${import.meta.env.VITE_API_URL}/products`,{
+           headers:{
+            Authorization: `Bearer ${import.meta.env.VITE_API_TOKEN}`
+           }
+          })
 
-         const result = await res.json()
+         //const result = await res.json()
           //console.log('Full response:', result);
-          setProducts(result)
-
+          setProducts(res.data)
+          // console.log('i am your data',res.data)
 
         }
         catch (error) {
@@ -76,7 +83,7 @@ const FeaturedProducts = ({ type } ) => {
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus voluptatum at unde, laborum, ex eligendi ut inventore animi aliquam odio ipsam deleniti laudantium facere, totam impedit excepturi ipsa sit nihil.</p>
       </div>
       <div className="bottom">
-        {products?.map((item)=> <Card item={item} key= {item.id} /> )}
+        {data?.map((item)=> <Card item={item} key= {item.id} /> )}
       </div>
     </div>
   )
