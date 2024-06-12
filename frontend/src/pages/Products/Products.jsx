@@ -1,8 +1,9 @@
 import './Products.scss'
 
-import { useState } from "react"
-import { useParams } from "react-router-dom"
 import List from "../../components/List/List"
+import useFetch from '../../../hooks/useFetch'
+import { useParams } from "react-router-dom"
+import { useState } from "react"
 
 function Products() {
 
@@ -10,24 +11,22 @@ function Products() {
   const [maxPrice,setMaxPrice] = useState(1000)
   const [sort,setSort] = useState(null)
 
+  const {data} = useFetch('/categories')
+  console.log(data)
 
   return (
     <div className="products">
       <div className="left">
           <div className="filterItem">
             <h2>Product Categories</h2>
-            <div className="inputItem">
-              <input type="checkbox" name="" id="1" value ={1}/>
-              <label htmlFor="1">Shoes</label>
-            </div>
-            <div className="inputItem">
-              <input type="checkbox" name="" id="2" value ={2}/>
-              <label htmlFor="2">T shirt</label>
-            </div>
-            <div className="inputItem">
-              <input type="checkbox" name="" id="3" value ={3}/>
-              <label htmlFor="3">Coats</label>
-            </div>
+            {data?.map(item=>(
+                 <div className="inputItem" key={item.id}>
+                 <input type="checkbox" name="" id="1" value ={1}/>
+                 <label htmlFor="1">{item.title}</label>
+               </div>
+
+            ))}
+
           </div>
           <div className="filterItem">
             <h2>Filter By Price</h2>

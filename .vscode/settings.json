@@ -14,6 +14,7 @@
     "typescript",
     "typescriptreact"
   ],
+
   // Auto Close Tag settings
   "auto-close-tag.enableAutoCloseTag": true,
 
@@ -78,5 +79,19 @@
   "files.autoSave": "onFocusChange",
   "editor.tabSize": 2,
   "editor.detectIndentation": false,
-  "editor.minimap.enabled": false
+  "editor.minimap.enabled": false,
+
+
+  "defaultSeverity": "error",
+  "extends": [
+    "tslint:recommended"
+  ],
+  "jsRules": {},
+  "rules": {
+    "no-unused-variable": false,
+    "semicolon": [true, "always"],
+    "triple-equals": true
+  },
+  "rulesDirectory": []
+
 }

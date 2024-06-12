@@ -31,6 +31,11 @@ def get_unique_file_path(instance, filename):
 
 
 class Products(models.Model):
+    class ProductType(models.TextChoices):
+        NORMAL = "normal", "Normal"
+        FEATURED = "featured", "Featured"
+        TRENDING = "trending", "Trending"
+
     title = models.CharField(max_length=100, verbose_name="Products_Titile")
     categories = models.ManyToManyField(Categories, verbose_name="Categories")
     sub_categories = models.ManyToManyField(
@@ -42,7 +47,11 @@ class Products(models.Model):
         upload_to=get_unique_file_path, verbose_name="Second Image", null=True, blank=True)
     price = models.DecimalField(
         max_digits=10, decimal_places=2, verbose_name="Price")
+    offer_price = models.DecimalField(
+        max_digits=10, decimal_places=2, verbose_name="Offer Price", null=True, blank=True)
     isNew = models.BooleanField(default=False)
+    product_type = models.CharField(
+        choices=ProductType.choices, max_length=20, default=ProductType.NORMAL, verbose_name="Product Type")
 
     def __str__(self):
         return self.title
