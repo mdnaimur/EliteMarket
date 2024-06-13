@@ -1,4 +1,4 @@
-from products.api.base.views import BaseProductsListView, BaseCategoriesListView
+from products.api.base.views import BaseProductsListView, BaseCategoriesListView, BaseCategoryDetailView
 
 from .serializers import ProductsSerializer, CategoriesSerializer
 
@@ -8,4 +8,8 @@ class ProductsListView (BaseProductsListView):
 
 
 class CategoriesListView(BaseCategoriesListView):
+    serializer_class = CategoriesSerializer
+
+
+class CategoryDetailView(BaseCategoryDetailView):
     serializer_class = CategoriesSerializer
