@@ -1,9 +1,9 @@
 import './Products.scss'
 
-import List from "../../components/List/List"
-import useFetch from '../../../hooks/useFetch'
-import { useParams } from "react-router-dom"
 import { useState } from "react"
+import { useParams } from "react-router-dom"
+import useFetch from '../../../hooks/useFetch'
+import List from "../../components/List/List"
 
 function Products() {
 
@@ -11,15 +11,20 @@ function Products() {
   const [maxPrice,setMaxPrice] = useState(1000)
   const [sort,setSort] = useState(null)
 
-  const {data} = useFetch('/categories')
-  console.log(data)
+  const {data: categories} = useFetch('/categories')
+
+  // const {data: category} = useFetch(`/categories/${catId}`)
+  //  console.log(categories.image)
+
+// here need to view all products and filter out by Categories
+// so need view all categorie after thatplan
 
   return (
     <div className="products">
       <div className="left">
           <div className="filterItem">
             <h2>Product Categories</h2>
-            {data?.map(item=>(
+            {categories?.map(item=>(
                  <div className="inputItem" key={item.id}>
                  <input type="checkbox" name="" id="1" value ={1}/>
                  <label htmlFor="1">{item.title}</label>

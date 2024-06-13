@@ -7,23 +7,29 @@ import SearchIcon from "@mui/icons-material/Search";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import useFetch from "../../../hooks/useFetch";
 import Cart from "../Cart/Cart";
 
 function Navbar() {
   const [open,setOpen] = useState(false)
+ const {data} = useFetch('/categories')
 
 
   return (
     <div className="navbar">
 
       <div className="wrapper">
-
         <div className="left">
         <Link className='link' to="/">  Elite-Market</Link>
         </div>
 
         <div className="center">
-          <div className="item">
+        {data?.map(item=>(
+          <div className="item" key={item.id}>
+          <Link className='link' to={`/products/${item.id}`}>{item.title}</Link>
+        </div>
+        ))}
+          {/* <div className="item">
             <Link className='link' to="/products/1">Men</Link>
           </div>
           <div className="item">
@@ -34,7 +40,7 @@ function Navbar() {
           </div>
           <div className="item">
             <Link className='link' to="/products/4">Accessories</Link>
-          </div>
+          </div> */}
         </div>
 
         <div className="right">

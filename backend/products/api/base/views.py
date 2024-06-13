@@ -1,4 +1,4 @@
-from rest_framework.generics import ListAPIView
+from rest_framework.generics import ListAPIView, RetrieveAPIView
 from .serializers import BaseProductsSerializer, BaseCategoriesSerializer
 from products.models import Products, Categories
 from rest_framework.authentication import SessionAuthentication, BaseAuthentication
@@ -19,3 +19,12 @@ class BaseCategoriesListView(ListAPIView):
 
     queryset = Categories.objects.all()
     serializer_class = BaseCategoriesSerializer
+
+
+class BaseCategoryDetailView(RetrieveAPIView):
+    authentication_classes = []
+    permission_classes = [AllowAny]
+
+    queryset = Categories.objects.all()
+    serializer_class = BaseCategoriesSerializer
+    lookup_field = 'id'
